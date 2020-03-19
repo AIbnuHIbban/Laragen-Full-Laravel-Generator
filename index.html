@@ -29,16 +29,16 @@
                 <!-- All In One -->
                 <div class="tab-pane fade show active" id="allone" role="tabpanel" aria-labelledby="allone-tab">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3">
                             <div class="card h-22">
                                 <div class="card-body">
                                     <input type="text" class="form-control mb-2" name="" id="table_name" aria-describedby="helpId" placeholder="Table Name" autofocus>
                                     <textarea class="form-control" name="" id="list_column" rows="8" placeholder="column1,column2,column3,column4,column5,"></textarea>
                                     <div class="row mt-3">
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             
                                         </div>
-                                        <div class="col-md-4 text-right">
+                                        <div class="col-md-5 text-right">
                                             <button class="btn btn-primary">Example</button>
                                             <button type="button" onclick="generate()" class="btn btn-danger">Generate</button>
                                         </div>
@@ -54,14 +54,15 @@
                                             </p>
                                         </div>
                                         <div class="col-md-2">
-                                            <span class="badge badge-danger">Copy Code</span>
+                                            <span onclick="copyClipboard('models')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
                                     <pre><code id="result_models"></code></pre>
+                                    <textarea id="clipboard_models" style="opacity: 0;"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 pl-0">
+                        <div class="col-md-6">
                             <div class="card dark h-16">
                                 <div class="card-body">
                                     <div class="row">
@@ -71,10 +72,12 @@
                                             </p>
                                         </div>
                                         <div class="col-md-2">
-                                            <span class="badge badge-danger">Copy Code</span>
+                                            <span onclick="copyClipboard('crud')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
                                     <pre><code id="result_crud"></code></pre>
+                                    <textarea id="clipboard_crud" style="opacity: 0;"></textarea>
+                                    
                                 </div>
                             </div>
                             <div class="card mt-3 dark h-16">
@@ -86,10 +89,11 @@
                                             </p>
                                         </div>
                                         <div class="col-md-2">
-                                            <span class="badge badge-danger">Copy Code</span>
+                                            <span onclick="copyClipboard('migration')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
                                     <pre><code id="result_migration"></code></pre>
+                                    <textarea id="clipboard_migration" style="opacity: 0;"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +126,7 @@
                                             </p>
                                         </div>
                                         <div class="col-md-2">
-                                            <span class="badge badge-danger">Copy Code</span>
+                                            <span onclick="copyClipboard('models')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
                                     <p>
@@ -160,7 +164,7 @@
                                             </p>
                                         </div>
                                         <div class="col-md-2">
-                                            <span class="badge badge-danger">Copy Code</span>
+                                            <span onclick="copyClipboard('crud')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
                                     <p>
@@ -198,7 +202,7 @@
                                             </p>
                                         </div>
                                         <div class="col-md-2">
-                                            <span class="badge badge-danger">Copy Code</span>
+                                            <span onclick="copyClipboard('migration')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
                                     <p>
