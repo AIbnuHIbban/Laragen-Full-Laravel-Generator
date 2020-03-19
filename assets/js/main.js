@@ -1,3 +1,6 @@
+$(window).on('load',function(){
+    $('#welcome').modal('show');
+});
 function copyClipboard(jenis) {
     var clipboard = $(`#clipboard_${jenis}`);
     clipboard.select();
@@ -190,4 +193,5 @@ class ${table.val().charAt(0).toUpperCase() + table.val().substr(1)} extends Mig
     cp_model.text(res_model.text())
     cp_crud.text(res_crud.text())
     cp_migration.text(res_migration.text())
+    list_column_val = "";
 }
