@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laragen - Full Generator Laravel</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <main class="">
+        <div class="container-fluid pt-3">
+            <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="allone-tab" data-toggle="tab" href="#allone" role="tab" aria-controls="allone" aria-selected="true">All in One</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="models-tab" data-toggle="tab" href="#models" role="tab" aria-controls="models" aria-selected="false">Models</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="crud-tab" data-toggle="tab" href="#crud" role="tab" aria-controls="crud" aria-selected="false">CRUD Functions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="migration-tab" data-toggle="tab" href="#migration" role="tab" aria-controls="migration" aria-selected="false">Migrations</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-3" id="myTabContent">
+                <!-- All In One -->
+                <div class="tab-pane fade show active" id="allone" role="tabpanel" aria-labelledby="allone-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-22">
+                                <div class="card-body">
+                                    <input type="text" class="form-control mb-2" name="" id="table_name" aria-describedby="helpId" placeholder="Table Name" autofocus>
+                                    <textarea class="form-control" name="" id="list_column" rows="8" placeholder="column1,column2,column3,column4,column5,"></textarea>
+                                    <div class="row mt-3">
+                                        <div class="col-md-8">
+                                            
+                                        </div>
+                                        <div class="col-md-4 text-right">
+                                            <button class="btn btn-primary">Example</button>
+                                            <button type="button" onclick="generate()" class="btn btn-danger">Generate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-3 dark h-10">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p class="font-weight-bold">
+                                                Result For Models
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span class="badge badge-danger">Copy Code</span>
+                                        </div>
+                                    </div>
+                                    <pre><code id="result_models"></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pl-0">
+                            <div class="card dark h-16">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p class="font-weight-bold">
+                                                Result For CRUD Functions
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span class="badge badge-danger">Copy Code</span>
+                                        </div>
+                                    </div>
+                                    <pre><code id="result_crud"></code></pre>
+                                </div>
+                            </div>
+                            <div class="card mt-3 dark h-16">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p class="font-weight-bold">
+                                                Result For Migrations
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span class="badge badge-danger">Copy Code</span>
+                                        </div>
+                                    </div>
+                                    <pre><code id="result_migration"></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="models" role="tabpanel" aria-labelledby="models-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-33">
+                                <div class="card-body">
+                                    <textarea class="form-control" name="" id="" rows="17" placeholder="Desain Database"></textarea>
+                                    <div class="row mt-3">
+                                        <div class="col-md-9">
+                                            
+                                        </div>
+                                        <div class="col-md-3 text-right">
+                                            <button class="btn btn-danger">Generate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pl-0">
+                            <div class="card h-33 dark">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p class="font-weight-bold">
+                                                Result For Models
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span class="badge badge-danger">Copy Code</span>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quia eligendi id itaque. Neque illo sequi, eveniet, quasi delectus excepturi nulla at obcaecati itaque velit corrupti dolores deserunt? Molestiae, totam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="crud" role="tabpanel" aria-labelledby="crud-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-33">
+                                <div class="card-body">
+                                    <textarea class="form-control" name="" id="" rows="17" placeholder="Desain Database"></textarea>
+                                    <div class="row mt-3">
+                                        <div class="col-md-9">
+                                            
+                                        </div>
+                                        <div class="col-md-3 text-right">
+                                            <button class="btn btn-danger">Generate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pl-0">
+                            <div class="card h-33 dark">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p class="font-weight-bold">
+                                                Result For CRUD Functions
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span class="badge badge-danger">Copy Code</span>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quia eligendi id itaque. Neque illo sequi, eveniet, quasi delectus excepturi nulla at obcaecati itaque velit corrupti dolores deserunt? Molestiae, totam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="migration" role="tabpanel" aria-labelledby="migration-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-33">
+                                <div class="card-body">
+                                    <textarea class="form-control" name="" id="" rows="17" placeholder="Desain Database"></textarea>
+                                    <div class="row mt-3">
+                                        <div class="col-md-9">
+                                            
+                                        </div>
+                                        <div class="col-md-3 text-right">
+                                            <button class="btn btn-danger">Generate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pl-0">
+                            <div class="card h-33 dark">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p class="font-weight-bold">
+                                                Result For Migrations
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span class="badge badge-danger">Copy Code</span>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quia eligendi id itaque. Neque illo sequi, eveniet, quasi delectus excepturi nulla at obcaecati itaque velit corrupti dolores deserunt? Molestiae, totam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+        
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
