@@ -6,6 +6,7 @@
     <title>Laragen - Full Generator Laravel</title>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css">
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -16,13 +17,13 @@
                     <a class="nav-link active" id="allone-tab" data-toggle="tab" href="#allone" role="tab" aria-controls="allone" aria-selected="true">All in One</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="models-tab" data-toggle="tab" href="#models" role="tab" aria-controls="models" aria-selected="false">Models</a>
+                    <a class="nav-link disabled" id="models-tab" data-toggle="tab" href="#models" role="tab" aria-controls="models" aria-selected="false">Models</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="crud-tab" data-toggle="tab" href="#crud" role="tab" aria-controls="crud" aria-selected="false">CRUD Functions</a>
+                    <a class="nav-link disabled" id="crud-tab" data-toggle="tab" href="#crud" role="tab" aria-controls="crud" aria-selected="false">CRUD Functions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="migration-tab" data-toggle="tab" href="#migration" role="tab" aria-controls="migration" aria-selected="false">Migrations</a>
+                    <a class="nav-link disabled" id="migration-tab" data-toggle="tab" href="#migration" role="tab" aria-controls="migration" aria-selected="false">Migrations</a>
                 </li>
             </ul>
             <div class="tab-content mt-3" id="myTabContent">
@@ -36,10 +37,13 @@
                                     <textarea class="form-control" name="" id="list_column" rows="8" placeholder="column1,column2,column3,column4,column5" onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_,1234567890',this)"></textarea>
                                     <div class="row mt-3">
                                         <div class="col-md-7">
-                                            
+                                            <ul>
+                                                <li><strong class="text-dark">ENTER</strong> in Textarea for Generate </li>
+                                                <li><strong class="text-primary">EXAMPLE</strong> for See Example Result </li>
+                                            </ul>
                                         </div>
                                         <div class="col-md-5 text-right">
-                                            <button class="btn btn-primary">Example</button>
+                                            <button class="btn btn-primary mr-3" onclick="example()">Example</button>
                                             <button type="button" onclick="generate()" class="btn btn-danger">Generate</button>
                                         </div>
                                     </div>
@@ -48,12 +52,13 @@
                             <div class="card mt-3 dark h-10">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <p class="font-weight-bold">
                                                 Result For Models
                                             </p>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-4 text-right ">
+                                            <span onclick="modal('models')" class="badge badge-danger">Full Code</span>
                                             <span onclick="copyClipboard('models')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
@@ -66,12 +71,13 @@
                             <div class="card dark h-16">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <p class="font-weight-bold">
                                                 Result For CRUD Functions
                                             </p>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-4 text-right ">
+                                            <span onclick="modal('crud')" class="badge badge-danger">Full Code</span>
                                             <span onclick="copyClipboard('crud')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
@@ -83,12 +89,13 @@
                             <div class="card mt-3 dark h-16">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <p class="font-weight-bold">
                                                 Result For Migrations
                                             </p>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-4 text-right ">
+                                            <span onclick="modal('migration')" class="badge badge-danger">Full Code</span>
                                             <span onclick="copyClipboard('migration')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
@@ -104,13 +111,15 @@
                         <div class="col-md-6">
                             <div class="card h-33">
                                 <div class="card-body">
-                                    <textarea class="form-control" name="" id="" rows="17" placeholder="Desain Database"></textarea>
+                                    <input type="text" class="form-control mb-2" name="" id="" aria-describedby="helpId" placeholder="Table Name" autofocus onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_',this)">
+                                    <textarea class="form-control" name="" id="" rows="15" placeholder="column1,column2,column3,column4,column5" onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_,1234567890',this)"></textarea>
                                     <div class="row mt-3">
-                                        <div class="col-md-9">
+                                        <div class="col-md-7">
                                             
                                         </div>
-                                        <div class="col-md-3 text-right">
-                                            <button class="btn btn-danger">Generate</button>
+                                        <div class="col-md-5 text-right">
+                                            <button class="btn btn-primary">Example</button>
+                                            <button type="button" onclick="generate()" class="btn btn-danger">Generate</button>
                                         </div>
                                     </div>
                                 </div>
@@ -120,12 +129,13 @@
                             <div class="card h-33 dark">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <p class="font-weight-bold">
                                                 Result For Models
                                             </p>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-4 text-right ">
+                                            <span onclick="modal('models')" class="badge badge-danger">Full Code</span>
                                             <span onclick="copyClipboard('models')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
@@ -142,13 +152,15 @@
                         <div class="col-md-6">
                             <div class="card h-33">
                                 <div class="card-body">
-                                    <textarea class="form-control" name="" id="" rows="17" placeholder="Desain Database"></textarea>
+                                    <input type="text" class="form-control mb-2" name="" id="" aria-describedby="helpId" placeholder="Table Name" autofocus onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_',this)">
+                                    <textarea class="form-control" name="" id="" rows="15" placeholder="column1,column2,column3,column4,column5" onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_,1234567890',this)"></textarea>
                                     <div class="row mt-3">
-                                        <div class="col-md-9">
+                                        <div class="col-md-7">
                                             
                                         </div>
-                                        <div class="col-md-3 text-right">
-                                            <button class="btn btn-danger">Generate</button>
+                                        <div class="col-md-5 text-right">
+                                            <button class="btn btn-primary">Example</button>
+                                            <button type="button" onclick="generate()" class="btn btn-danger">Generate</button>
                                         </div>
                                     </div>
                                 </div>
@@ -158,12 +170,13 @@
                             <div class="card h-33 dark">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <p class="font-weight-bold">
                                                 Result For CRUD Functions
                                             </p>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-4 text-right ">
+                                            <span onclick="modal('crud')" class="badge badge-danger">Full Code</span>
                                             <span onclick="copyClipboard('crud')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
@@ -180,13 +193,15 @@
                         <div class="col-md-6">
                             <div class="card h-33">
                                 <div class="card-body">
-                                    <textarea class="form-control" name="" id="" rows="17" placeholder="Desain Database"></textarea>
+                                    <input type="text" class="form-control mb-2" name="" id="" aria-describedby="helpId" placeholder="Table Name" autofocus onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_',this)">
+                                    <textarea class="form-control" name="" id="" rows="15" placeholder="column1,column2,column3,column4,column5" onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_,1234567890',this)"></textarea>
                                     <div class="row mt-3">
-                                        <div class="col-md-9">
+                                        <div class="col-md-7">
                                             
                                         </div>
-                                        <div class="col-md-3 text-right">
-                                            <button class="btn btn-danger">Generate</button>
+                                        <div class="col-md-5 text-right">
+                                            <button class="btn btn-primary">Example</button>
+                                            <button type="button" onclick="generate()" class="btn btn-danger">Generate</button>
                                         </div>
                                     </div>
                                 </div>
@@ -196,12 +211,13 @@
                             <div class="card h-33 dark">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <p class="font-weight-bold">
                                                 Result For Migrations
                                             </p>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-4 text-right ">
+                                            <span onclick="modal('migration')" class="badge badge-danger">Full Code</span>
                                             <span onclick="copyClipboard('migration')" class="badge badge-danger">Copy Code</span>
                                         </div>
                                     </div>
@@ -221,12 +237,13 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body p-0">
-                    <img class="img-fluid" src="assets/img/welcome.png" alt="welcome_laragen" srcset="assets/img/welcome.png">
+                    <img class="img-fluid" style="border-radius:20px" src="assets/img/welcome.png" alt="welcome_laragen" srcset="assets/img/welcome.png">
                 </div>
             </div>
         </div>
     </div>
-        
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js'></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="https://aibnuhibban.github.io/OnKey-Javascript/key.min.js"></script>

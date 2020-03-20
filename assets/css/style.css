@@ -20,6 +20,23 @@ body{
     height: 16rem !important;
 }
 
+pre code{
+    font-size: 12px !important;
+}
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+::-webkit-scrollbar{
+	width: 10px;
+    background-color: #08061f;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #0F0C3E;
+    border-radius: 10px;
+}
+
 .card::-webkit-scrollbar-track{
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #08061f;
@@ -57,4 +74,31 @@ textarea::-webkit-scrollbar-thumb{
 
 pre{
     overflow: hidden;
+}
+
+.swal2-popup{
+    background: #08061f !important;
+    border: 10px solid #fff !important;
+    border-radius: 20px !important;
+}
+.swal2-title,.swal2-content{
+    color: #fff !important;
+}
+.swal2-styled.swal2-confirm,.swal2-icon.swal2-error{
+    background-color: #DD271C !important;
+}
+.swal2-icon.swal2-error{
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+.swal2-icon.swal2-error [class^='swal2-x-mark-line']{
+    background-color: #fff !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring{
+    border: .25em solid #28a745 !important;
+}
+
+.swal2-icon.swal2-success [class^='swal2-success-line']{
+    background-color: #3fef67 !important;
 }
