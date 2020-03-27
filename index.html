@@ -33,18 +33,21 @@
                         <div class="col-md-6 mb-3">
                             <div class="card h-22">
                                 <div class="card-body">
-                                    <input type="text" class="form-control mb-2" name="" id="table_name" aria-describedby="helpId" placeholder="Table Name" autofocus onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_',this)">
+                                    <input type="text" class="form-control mb-2 table_name" name="" id="table_name" aria-describedby="helpId" placeholder="Table Name" autofocus onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_',this)">
                                     <textarea class="form-control" name="" id="list_column" rows="8" placeholder="column1,column2,column3,column4,column5" onkeypress="return goodchars(event,'abcdefghijklmnopqrstuvwxyz_,1234567890',this)"></textarea>
-                                    <div class="row mt-3">
-                                        <div class="col-md-7">
-                                            <ul>
-                                                <li><strong class="text-dark">ENTER</strong> in Textarea for Generate </li>
-                                                <li><strong class="text-primary">EXAMPLE</strong> for See Example Result </li>
-                                            </ul>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <small>
+                                                <ul>
+                                                    <li><strong class="text-dark">ENTER</strong> in Textarea for Generate </li>
+                                                    <li><strong class="text-primary">EXAMPLE</strong> for See Example Result </li>
+                                                </ul>
+                                            </small>
                                         </div>
-                                        <div class="col-md-5 text-right">
-                                            <button class="btn btn-primary mr-3" onclick="example()">Example</button>
-                                            <button type="button" onclick="generate()" class="btn btn-danger">Generate</button>
+                                        <div class="col-md-6 text-right">
+                                            <button type="button" class="btn btn-sm btn-primary mr-3 example" onclick="example()">Example</button>
+                                            <button type="button" class="btn btn-sm btn-secondary mr-3 d-none clear" onclick="kosongkan()">Clear</button>
+                                            <button type="button" onclick="generate()" class="btn btn-sm btn-danger">Generate</button>
                                         </div>
                                     </div>
                                 </div>

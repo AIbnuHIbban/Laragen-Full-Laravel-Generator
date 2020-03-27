@@ -1,11 +1,36 @@
+function clearFocus(){
+    $('.clear').focus()
+}
+function kosongkan() {
+    btn_example         = $('.example');
+    btn_clear           = $('.clear');
+    btn_example.removeClass('d-none');
+    btn_clear.addClass('d-none');
+    var res_model       = $('#result_models')
+    var res_crud        = $('#result_crud')
+    var res_migration   = $('#result_migration')
+    res_model.text("");
+    res_crud.text("");
+    res_migration.text("");
+    $('.table_name').focus()
+}
+
+function checkModal() {
+    if($('#myModal').hasClass('in') === false){
+        $('.table_name').focus()
+    }
+}
+
 $(window).on('load',function(){
     $('#welcome').modal('show');
 });
+
+
 document.addEventListener('contextmenu', event => event.preventDefault());
 $(document).keydown(function(e){
     if(e.which === 123){
        return false;
-    }else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+    }else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)){
         return false;
     }else if (e.ctrlKey && e.keyCode == 85) {
         return false;
@@ -39,6 +64,8 @@ function copyClipboard(jenis) {
 }
 
 function generate(){
+    btn_example         = $('.example');
+    btn_clear           = $('.clear');
     var table           = $('#table_name')
     var list_column_val = $('#list_column').val()
     var list_column     = list_column_val.split(',')
@@ -92,7 +119,7 @@ function generate(){
             if (i === list_column.length-1) {
                 migrations += `$table->string('${list_column[i]}');`
             }else{
-                migrations += `$table->string('${list_column[i]}');\n            `
+                migrations += `$table->string('${list_column[i]}');\n               `
             }
         }
         res_model.text(`<?php
@@ -231,10 +258,15 @@ function generate(){
         cp_crud.text(res_crud.text())
         cp_migration.text(res_migration.text())
         list_column_val = "";
+        btn_example.addClass('d-none');
+        btn_clear.removeClass('d-none');
+        clearFocus()
     }
 }
 
 function example(){
+    btn_example         = $('.example');
+    btn_clear           = $('.clear');
     var table           = "Example"
     var res_model       = $('#result_models')
     var res_crud        = $('#result_crud')
@@ -266,8 +298,8 @@ class ${table} extends Model{
      * Thanks For Using Laragen
      */
 }`)
-        res_crud.text(`<?php
-    
+    res_crud.text(`<?php
+
 namespace App\\Http\\Controllers;
 
 use Illuminate\\Http\\Request;
@@ -275,65 +307,65 @@ use App\\${table};
 
 class ${table}Controller extends Controller{
 
-    public function store(Request $request){
-        $validate = Validator::make($request->all(),[
-            ${validasi}
-        ]);
+public function store(Request $request){
+    $validate = Validator::make($request->all(),[
+        ${validasi}
+    ]);
 
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate);
-        }
-
-        $send = ${table.charAt(0).toUpperCase() + table.substr(1)}::create([
-            ${data}
-        ]);
-
-        // $send = ${table.charAt(0).toUpperCase() + table.substr(1)}::insert([
-        ${data_comment}
-        // ]);
-        
-        // $send = ${table.charAt(0).toUpperCase() + table.substr(1)}::create($request->all());
-
-
-        if ($send) {
-            return redirect()->back();
-        }
+    if ($validate->fails()) {
+        return redirect()->back()->withErrors($validate);
     }
 
-    public function update(Request $request,$${table.toLowerCase()}){
-        $validate = Validator::make($request->all(),[
-            ${validasi}
-        ]);
+    $send = ${table.charAt(0).toUpperCase() + table.substr(1)}::create([
+        ${data}
+    ]);
 
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate);
-        }
-
-        $${table.toLowerCase()} = ${table.charAt(0).toUpperCase() + table.substr(1)}::find($${table.toLowerCase()});
-
-        $array = [
-            ${data}
-        ];
-
-        if ($${table.toLowerCase()}->update($array)) {
-            return redirect()->back();
-        }
-    }
-
-    public function destroy($${table.toLowerCase()}){
-        $${table.toLowerCase()} = ${table.charAt(0).toUpperCase() + table.substr(1)}::find($${table.toLowerCase()});
-        if ($${table.toLowerCase()}->delete()) {
-            return redirect()->back();
-        }
-    }
+    // $send = ${table.charAt(0).toUpperCase() + table.substr(1)}::insert([
+    ${data_comment}
+    // ]);
     
-    /**
-     * Create by LeeNuksID :D
-     *
-     * Thanks For Using Laragen
-     */
+    // $send = ${table.charAt(0).toUpperCase() + table.substr(1)}::create($request->all());
+
+
+    if ($send) {
+        return redirect()->back();
+    }
+}
+
+public function update(Request $request,$${table.toLowerCase()}){
+    $validate = Validator::make($request->all(),[
+        ${validasi}
+    ]);
+
+    if ($validate->fails()) {
+        return redirect()->back()->withErrors($validate);
+    }
+
+    $${table.toLowerCase()} = ${table.charAt(0).toUpperCase() + table.substr(1)}::find($${table.toLowerCase()});
+
+    $array = [
+        ${data}
+    ];
+
+    if ($${table.toLowerCase()}->update($array)) {
+        return redirect()->back();
+    }
+}
+
+public function destroy($${table.toLowerCase()}){
+    $${table.toLowerCase()} = ${table.charAt(0).toUpperCase() + table.substr(1)}::find($${table.toLowerCase()});
+    if ($${table.toLowerCase()}->delete()) {
+        return redirect()->back();
+    }
+}
+
+/**
+ * Create by LeeNuksID :D
+ *
+ * Thanks For Using Laragen
+ */
 }`)
-        res_migration.text(`<?php
+    res_migration.text(`<?php
     
 use Illuminate\\Database\\Migrations\\Migration;
 use Illuminate\\Database\\Schema\\Blueprint;
@@ -375,11 +407,12 @@ class ${table} extends Migration{
      */
 }`)
     
+    btn_example.addClass('d-none');
+    btn_clear.removeClass('d-none');
     cp_model.text('')
     cp_crud.text('')
     cp_migration.text('')
     cp_model.text(res_model.text())
     cp_crud.text(res_crud.text())
     cp_migration.text(res_migration.text())
-    list_column_val = "";
 }
