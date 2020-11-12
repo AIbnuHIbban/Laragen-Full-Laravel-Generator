@@ -125,10 +125,13 @@ function generate(){
         res_model.text(`<?php
 
     namespace App\\Models;
-        
+    
+    use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;        
     use Illuminate\\Database\\Eloquent\\Model;
         
     class ${table.val().charAt(0).toUpperCase() + table.val().substr(1)} extends Model{
+        use HasFactory;
+
         protected $table = "${table.val().toLowerCase().replace(" ", "_")}";
 
         protected $fillable = [${kolom}];
@@ -140,7 +143,6 @@ function generate(){
          */
     }`)
         res_crud.text(`<?php
-
 
     namespace App\\Http\\Controllers;
 
@@ -282,10 +284,13 @@ function example(){
     res_model.text(`<?php
     
 namespace App\\Models;
-    
+
+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;
 use Illuminate\\Database\\Eloquent\\Model;
     
 class ${table} extends Model{
+    use HasFactory;
+
     protected $table = "${table.toLowerCase().replace(" ", "_")}";
 
     protected $fillable = [${kolom}];
