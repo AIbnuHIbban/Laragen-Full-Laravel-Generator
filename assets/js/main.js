@@ -124,7 +124,7 @@ function generate(){
         }
         res_model.text(`<?php
 
-    namespace App;
+    namespace App\\Models;
         
     use Illuminate\\Database\\Eloquent\\Model;
         
@@ -145,7 +145,7 @@ function generate(){
     namespace App\\Http\\Controllers;
 
     use Illuminate\\Http\\Request;
-    use App\\${table.val().charAt(0).toUpperCase() + table.val().substr(1)};
+    use App\\Models\\${table.val().charAt(0).toUpperCase() + table.val().substr(1)};
     use Illuminate\\Support\\Facades\\Validator;
     // use Illuminate\\Support\\Facades\\Auth;
 
@@ -281,7 +281,7 @@ function example(){
     let migrations      = "$table->string('column1')"
     res_model.text(`<?php
     
-namespace App;
+namespace App\\Models;
     
 use Illuminate\\Database\\Eloquent\\Model;
     
@@ -303,7 +303,7 @@ class ${table} extends Model{
 namespace App\\Http\\Controllers;
 
 use Illuminate\\Http\\Request;
-use App\\${table};
+use App\\Models\\${table};
 
 class ${table}Controller extends Controller{
 
