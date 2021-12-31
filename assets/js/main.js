@@ -149,7 +149,7 @@ namespace App\\Http\\Controllers;
 use Illuminate\\Http\\Request;
 use App\\Models\\${table.val().charAt(0).toUpperCase() + table.val().substr(1)};
 use Illuminate\\Support\\Facades\\Validator;
-// use Illuminate\\Support\\Facades\\Auth;
+// use Auth;
 
 class ${table.val().charAt(0).toUpperCase() + table.val().substr(1)}Controller extends Controller{
 
@@ -159,7 +159,8 @@ class ${table.val().charAt(0).toUpperCase() + table.val().substr(1)}Controller e
         ]);
 
         if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate);
+            // return redirect()->back()->withErrors($validate);
+            return response()->json($validate->errors(), 400);
         }
 
         $send = ${table.val().charAt(0).toUpperCase() + table.val().substr(1)}::create([
@@ -174,34 +175,37 @@ class ${table.val().charAt(0).toUpperCase() + table.val().substr(1)}Controller e
 
 
         if ($send) {
-            return redirect()->back();
+            return response()->json('success', 200);
         }
     }
 
-    public function update(Request $request,$${table.val().toLowerCase()}){
+    public function update(Request $request,$id){
         $validate = Validator::make($request->all(),[
             ${validasi}
         ]);
 
         if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate);
+            // return redirect()->back()->withErrors($validate);
+            return response()->json($validate->errors(), 400);
         }
 
-        $${table.val().toLowerCase()} = ${table.val().charAt(0).toUpperCase() + table.val().substr(1)}::find($${table.val().toLowerCase()});
+        $${table.val().toLowerCase()} = ${table.val().charAt(0).toUpperCase() + table.val().substr(1)}::find($id);
 
         $array = [
             ${data}
         ];
 
         if ($${table.val().toLowerCase()}->update($array)) {
-            return redirect()->back();
+            // return redirect()->back();
+            return response()->json('success', 200);
         }
     }
 
-    public function destroy($${table.val().toLowerCase()}){
-        $${table.val().toLowerCase()} = ${table.val().charAt(0).toUpperCase() + table.val().substr(1)}::find($${table.val().toLowerCase()});
+    public function destroy($id){
+        $${table.val().toLowerCase()} = ${table.val().charAt(0).toUpperCase() + table.val().substr(1)}::find($id);
         if ($${table.val().toLowerCase()}->delete()) {
-            return redirect()->back();
+            // return redirect()->back();
+            return response()->json('success', 200);
         }
     }
 
